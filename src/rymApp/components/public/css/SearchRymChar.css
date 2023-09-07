@@ -1,0 +1,58 @@
+
+.searchDrop {
+    overflow-x: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    background-color: rgb(39, 39, 39);
+    width: fit-content;
+    margin-top: 0.2rem;
+    min-height: 2rem;
+    max-height: 20rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    z-index: 5;
+    min-width: 13rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchDrop::-webkit-scrollbar {
+    width: 0.25rem; /* Ancho de la barra lateral horizontal */
+    height: 0.5rem; /* Altura de la barra lateral vertical */
+}
+
+.searchDrop::-webkit-scrollbar-thumb {
+    background-color: #313131; /* Color del pulgar (barra) */
+    border-radius: 6px; /* Radio de borde del pulgar */
+}
+
+.searchDrop::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Color del fondo de la barra lateral */
+}
+
+.hidden {
+    display: none;
+    scroll-behavior: auto;
+}
+
+.item{
+    padding-left: 1rem;
+    font-size: medium;
+    font-weight: 700;
+    color: white;
+    white-space: pre-line;
+    min-height: 1rem;
+}
+
+.containerItem {
+    width: 100%;
+    height: 20%;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    text-decoration: none;
+    scroll-behavior: auto;
+    transition: background-color 0.3s ease;
+}
+
+.containerItem:hover{
+    background-color: #686868;
+}
