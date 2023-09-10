@@ -1,8 +1,7 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card } from './Card'
 import RickAndMortyService from '../../services/RickAndMorty.service';
-import { API_RM } from '../../constants/Api.constants';
-import { useParams, Link, redirect } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 export const Cards = () => {
   

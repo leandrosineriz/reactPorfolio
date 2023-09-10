@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import RickAndMortyService from '../../services/RickAndMorty.service';
 
 export const Detail = () => {
-
   const [mascota, setMascota] = useState(null);
+
+  const navigate = useNavigate();
+  
 
   const {id} = useParams();
   let {page} = useParams();
 
-  const {pathname} = useLocation();
+  //const {pathname} = useLocation();
 
   if (page == undefined) {
     page = 1;
@@ -47,6 +49,7 @@ export const Detail = () => {
         { mascota ? (
           <div className="row g-4">
           <div className="col-md-6 position-relative">
+            <button onClick={()=>{navigate(-1);}}>Volver</button>
             <Link to={"/rym/"+page} style={{"position": "absolute"}}>
               <svg  className="img-fluid" xmlns="http://www.w3.org/2000/svg" id='arrowBack' height="2rem" viewBox="0 0 448 512" style={{marginLeft:"0.5rem"}}><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" /></svg>
             </Link>
