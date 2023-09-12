@@ -5,32 +5,65 @@ import RickAndMortyService from "../../services/RickAndMorty.service";
 export const AllCharactersOnScroll = () => {
   const [mascotas, setMascotas] = useState([]);
   const [page, setPage] = useState(1);
+  const [mounted, setMounted] = useState(false);
 
   let cardsList = [];
   let lastCardObserver;
-  let moreCards;
+  let moreCards = document.querySelector(".moreCards");
 
   useEffect(() => {
-    moreCards = document.querySelector(".moreCards");
     const controller = new AbortController();
+
+    if (!mounted) {
+      let charactersStorage = JSON.parse(localStorage.getItem("mascotas"));
+      let pageStorage = parseInt(localStorage.getItem("page"));
+
+      if (charactersStorage == null) {
+        localStorage.setItem("mascotas", JSON.stringify([]));
+        charactersStorage = JSON.parse(localStorage.getItem("mascotas"));
+      }
+
+      if (isNaN(pageStorage)) {
+        localStorage.setItem("page", parseInt(1));
+        pageStorage = parseInt(localStorage.getItem("page"));
+      }
+
+      setMascotas(charactersStorage);
+      setPage(pageStorage);
+      setMounted(true);
+      return;
+    } 
+    
+    if (page == parseInt(localStorage.getItem("page")) && page != 1) {
+      lastCardObserver.observe(moreCards);
+      return;
+    }
 
     RickAndMortyService.getCharactersByPage(page, {
       signal: controller.signal,
     })
-      .then((data) => {
-        if (data.error) {
-          lastCardObserver.unobserve(moreCards);
-          return;
-        }
-        setMascotas((prevMascotas) => [...prevMascotas, ...data.results]);
-        lastCardObserver.observe(moreCards);
-      })
-      .catch((error) => console.log(error));
+    .then((data) => {
+      
+      if (data.error) { //Ultima pagina
+        lastCardObserver.unobserve(moreCards);
+        return;
+      }
+
+      setMascotas((prevMascotas) => {
+        localStorage.setItem("mascotas", JSON.stringify([...prevMascotas, ...data.results]));
+        return [...prevMascotas, ...data.results];
+      });
+
+      lastCardObserver.observe(moreCards);
+      localStorage.setItem("page", parseInt(page));
+    })
+    .catch((error) => console.log(error));
+
 
     return () => {
       controller.abort();
     };
-  }, [page]);
+  }, [page, mounted]);
 
   //Looks for ".moreCards" div to carge a new page of characters
   lastCardObserver = new IntersectionObserver((entries) => {
