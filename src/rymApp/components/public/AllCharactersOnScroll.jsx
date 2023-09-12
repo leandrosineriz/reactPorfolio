@@ -34,7 +34,7 @@ export const AllCharactersOnScroll = () => {
       return;
     } 
     
-    if (page == parseInt(localStorage.getItem("page")) && page != 1) {
+    if (page == parseInt(localStorage.getItem("page")) && mascotas.length!=0) {
       lastCardObserver.observe(moreCards);
       return;
     }
