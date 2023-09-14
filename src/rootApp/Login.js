@@ -1,4 +1,4 @@
-import logo from "../../img/logo192.png"
+import logo from "../rymApp/img/logo192.png"
 import React from 'react' 
 
 export const Login = () => {

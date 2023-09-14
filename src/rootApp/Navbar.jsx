@@ -12,6 +12,7 @@ export const Navbar = () => {
           <span className="navbar-brand" >
             React Portfolio
           </span>
+          
           <button
             className="navbar-toggler"
             type="button"
@@ -51,9 +52,14 @@ export const Navbar = () => {
               </li>
              
             </ul>
+            
             <div className="navbar-brand">
                 Leandro Siñeriz
             </div>
+            <div className="text-end">
+                <Link to={"/login"}><button type="button" className="btn btn-outline-light me-2">Login</button></Link>
+                <Link to={"/user-form"}><button type="button" className="btn btn-warning">Sign-up</button></Link>
+                </div>
           </div>
         </div>
       </nav>

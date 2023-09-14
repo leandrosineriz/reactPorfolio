@@ -37,10 +37,7 @@ export const Navbar = () => {
 
                 <SearchRymChar />
 
-                <div className="text-end">
-                <Link to={"/rym/login"}><button type="button" className="btn btn-outline-light me-2">Login</button></Link>
-                <Link to={"/rym/user-form"}><button type="button" className="btn btn-warning">Sign-up</button></Link>
-                </div>
+                
             </div>
             </div>
         </header>
