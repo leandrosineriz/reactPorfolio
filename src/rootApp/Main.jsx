@@ -7,7 +7,6 @@ import { Navbar } from "./Navbar"
 export const Main = () => {
   return (
     <div>
-        <Navbar />
         <div className='container1'>
             <Link to={"/rym"} className='link1'><img src={logo} className='img1' alt='img1'/></Link>
         </div>

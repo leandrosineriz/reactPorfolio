@@ -38,12 +38,12 @@ export const UserForm = () => {
                 type="email"
                 className="form-control"
                 id="email"
-                placeholder="you@example.com"
+                placeholder="Mail@example.com"
                 name="email"
                 onChange={handleChanges}
               />
               <div className="invalid-feedback">
-                Please enter a valid email address for shipping updates.
+                Por favor ingrese un email valido.
               </div>
             </div>
 
@@ -55,7 +55,7 @@ export const UserForm = () => {
                 type="password"
                 className="form-control"
                 id="address"
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
                 name="password"
                 onChange={handleChanges}
@@ -71,7 +71,7 @@ export const UserForm = () => {
                 type="password"
                 className="form-control"
                 id="address2"
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
                 onChange={handlePasswordConfirmation}
               />

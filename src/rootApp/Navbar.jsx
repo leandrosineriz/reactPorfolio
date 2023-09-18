@@ -9,9 +9,9 @@ export const Navbar = () => {
         aria-label="Fourth navbar example"
       >
         <div className="container-fluid">
-          <span className="navbar-brand" >
+          <Link to={"/"} className="navbar-brand" >
             React Portfolio
-          </span>
+          </Link>
           
           <button
             className="navbar-toggler"
