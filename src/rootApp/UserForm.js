@@ -43,7 +43,7 @@ export const UserForm = () => {
                 onChange={handleChanges}
               />
               <div className="invalid-feedback">
-                Por favor ingrese un email valido.
+                Por favor ingrese un email valido
               </div>
             </div>
 
